@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -99,12 +100,10 @@
               required>
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-            <textarea id="message" name="message" placeholder="Your message here..."
-              class="mt-1 text-sm p-2 w-full rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300 h-32 resize-y"></textarea>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <div id="message" name="message" class="bg-white h-32 border border-gray-300 p-2"></div>
           </div>
         </div>
-
         <div class="flex justify-end">
           <button type="submit"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400">
@@ -113,6 +112,29 @@
         </div>
       </form>
     </div>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+      var quill = new Quill('#message', {
+        theme: 'snow',
+        placeholder: 'Your message here...',
+        modules: {
+          toolbar: [
+            ['bold', 'italic'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link']
+          ]
+        }
+      });
+
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function () {
+        const messageInput = document.createElement('input');
+        messageInput.setAttribute('type', 'hidden');
+        messageInput.setAttribute('name', 'message');
+        messageInput.setAttribute('value', quill.root.innerHTML);
+        form.appendChild(messageInput);
+      });
+    </script>
 </body>
 
 </html>

@@ -21,11 +21,13 @@ if (
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $em = "Invalid email format";
         header("Location: index.php?error=$em");
+        exit;
     }
 
     if (empty($name) || empty($subject) || empty($message)) {
         $em = "Fill out all required entry fields";
         header("Location: index.php?error=$em");
+        exit;
     }
 
     $mail = new PHPMailer(true);
@@ -36,8 +38,9 @@ if (
         $mail->SMTPAuth = true;
         $mail->Username = 'mailertestacc89@gmail.com';
         $mail->Password = 'clqkwyyibsftfhan';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
 
         $mail->setFrom($email, $name);
         $mail->addAddress('mailertestacc89@gmail.com', "Test Account");
@@ -48,12 +51,18 @@ if (
         $mail->Body = $message;
 
         $mail->send();
-        $sm = 'Message has been sent.';
+        $sm = 'Message has been sent';
         header("Location: index.php?success=$sm");
+        exit;
     } catch (Exception $e) {
-        $em = "Message could not be sent.";
+        $em = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         header("Location: index.php?error=$em");
+        exit;
     }
+} else {
+    $em = "Something went wrong!";
+    header("Location: index.php?error=$em");
+    exit;
 }
 
 ?>

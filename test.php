@@ -2,170 +2,117 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>MAILER</title>
-  <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-512.png"
-    type="image/mail" />
-  <link rel="stylesheet" href="/styles/login.css" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mailer</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6806/6806987.png" type="image/mail" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
   <style>
-    @import url(https://online-fonts.com/fonts/Poppins);
-
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background: #fff;
-      padding: 20px;
-    }
-
-    .container {
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      padding: 40px 25px;
-      width: 100%;
-      max-width: 500px;
-      text-align: center;
-    }
-
-    img {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 15px;
-    }
-
-    label {
-      font-size: 14px;
-      display: block;
-      margin-top: 10px;
-      margin-bottom: 5px;
-      text-align: left;
-      color: black;
-      font-weight: bold;
-    }
-
-    input[type="email"],
-    input[type="text"],
-    input[type="subject"] {
-      font-size: 15px;
-      width: 100%;
-      height: 45px;
-      margin-bottom: 5px;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    textarea {
-      font-size: 15px;
-      width: 100%;
-      height: 70px;
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    .button {
-      font-size: 15px;
-      padding: 10px;
-      height: 45px;
-      border-radius: 10px;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      border: none;
-      color: white;
-      cursor: pointer;
-      background-color: #072f5f;
-      width: 100%;
-    }
-
-    .error {
-      color: #721c24;
-      background-color: #f8d7da;
-      padding: 14px 10px;
-      border-radius: 5px;
-    }
-
-    .success {
-      color: #155724;
-      background-color: #d4edda;
-      padding: 14px 10px;
-      border-radius: 5px;
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 30px 20px;
-      }
-
-      .button {
-        font-size: 15px;
-        height: 40px;
-      }
-
-      img {
-        width: 80px;
-        height: 80px;
-      }
+      font-family: 'Inter', sans-serif;
     }
   </style>
 </head>
 
-<body>
-  <div class="container">
-    <h3>CONTACT FORM</h3>
-    <br />
-    <?php if (isset($_GET['error'])) { ?>
-      <p class="error">
-        <?= htmlspecialchars($_GET['error']) ?>
-      </p>
-    <?php }
-    ?>
-    <?php if (isset($_GET['success'])) { ?>
-      <p class="success">
-        <?= htmlspecialchars($_GET['success']) ?>
-      </p>
-    <?php }
-    ?>
-    <form method="POST" action="contact.php">
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
+<body class="bg-gray-100 flex justify-center items-center min-h-screen p-4">
+  <div class="bg-white rounded-md shadow-md w-full max-w-2xl">
+    <!-- Header -->
+    <div class="bg-[#3b4455] text-white p-4 rounded-t-md flex items-center justify-between">
+      <h1 class="text-lg font-semibold">Contact Form</h1>
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="p-2 border-b border-gray-200">
+      <div class="flex items-center gap-2">
+        <button class="rounded-md hover:bg-gray-200" style="padding: 1px 5px;">
+          <span class="material-symbols-outlined" style="margin-top: 5px;">
+            arrow_back
+          </span>
+        </button>
+        <button class="rounded-md hover:bg-gray-200" style="padding: 1px 5px;">
+          <span class="material-symbols-outlined" style="margin-top: 5px;">
+            arrow_forward
+          </span>
+        </button>
+        <a href="<?php echo $_SERVER['PHP_SELF']; ?>" class="rounded-md hover:bg-gray-200"
+          style="padding: 1px 5px; display: inline-block;">
+          <span class="material-symbols-outlined" style="margin-top: 5px;">
+            refresh
+          </span>
+        </a>
+        <div class="flex-1">
+          <input type="text" placeholder="Search"
+            class="w-full p-1.5 rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300">
+        </div>
+        <button class="rounded-md hover:bg-gray-200" style="padding: 1px 5px;">
+          <span class="material-symbols-outlined" style="margin-top: 5px;">
+            menu
+          </span>
+        </button>
       </div>
 
-      <div>
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required />
-      </div>
+      <?php if (isset($_GET['error'])) { ?>
+        <div class="error p-6">
+          <p class="p-3 w-full rounded-md text-sm font-medium text-center text-red-800 bg-red-100 border border-red-300">
+            <?= htmlspecialchars($_GET['error']) ?>
+          </p>
+        </div>
+      <?php }
+      ?>
+      <?php if (isset($_GET['success'])) { ?>
+        <div class="success p-6">
+          <p
+            class=" p-3 w-full rounded-md text-sm font-medium text-center text-green-800 bg-green-100 border border-green-300">
+            <?= htmlspecialchars($_GET['success']) ?>
+          </p>
+        </div>
+      <?php }
+      ?>
 
-      <div>
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" required />
-      </div>
+      <!-- Form -->
+      <form method="POST" action="contact.php" style="padding: 1px 25px 5px 25px; ">
+        <div class="space-y-4 mb-2 mt-1">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="name" name="name"
+              class="mt-1 p-2 w-full rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300"
+              required>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input type="email" id="email" name="email"
+              class="mt-1 p-2 w-full rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300"
+              required>
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+            <input type="text" id="subject" name="subject"
+              class="mt-1 p-2 w-full rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300"
+              required>
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+            <textarea id="message" name="message" placeholder="Your message here..."
+              class="mt-1 text-sm p-2 w-full rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300 h-32 resize-y"></textarea>
+          </div>
+        </div>
 
-      <div>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea>
-      </div>
-
-      <div>
-        <input class="button" type="submit" name="submit" value="Send Email" />
-      </div>
-    </form>
-  </div>
-
+        <div class="flex justify-end">
+          <button type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            SEND
+          </button>
+        </div>
+      </form>
+    </div>
 </body>
 
 </html>
