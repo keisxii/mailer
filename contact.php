@@ -48,10 +48,10 @@ if (
         $mail->Body = $message;
 
         $mail->send();
-        $sm = 'Message has been sent';
+        $sm = 'Message has been sent.';
         header("Location: index.php?success=$sm");
     } catch (Exception $e) {
-        $em = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        $em = "Message could not be sent.";
         header("Location: index.php?error=$em");
     }
 }
