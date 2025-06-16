@@ -20,7 +20,6 @@
 
 <body class="bg-gray-100 flex justify-center items-center min-h-screen p-4">
   <div class="bg-white rounded-md shadow-md w-full max-w-2xl">
-    <!-- Header -->
     <div class="bg-[#3b4455] text-white p-4 rounded-t-md flex items-center justify-between">
       <h1 class="text-lg font-semibold">Contact Form</h1>
       <div class="flex items-center gap-2">
@@ -30,7 +29,6 @@
       </div>
     </div>
 
-    <!-- Toolbar -->
     <div class="p-2 border-b border-gray-200">
       <div class="flex items-center gap-2">
         <button class="rounded-md hover:bg-gray-200" style="padding: 1px 5px;">
@@ -51,7 +49,7 @@
         </a>
         <div class="flex-1">
           <input type="text" placeholder="Search"
-            class="w-full p-1.5 rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300">
+            class="w-full p-1.5 rounded-md border border-gray-300 focus:ring focus:ring-blue-200 focus:border-blue-300 cursor-not-allowed" disabled>
         </div>
         <button class="rounded-md hover:bg-gray-200" style="padding: 1px 5px;">
           <span class="material-symbols-outlined" style="margin-top: 5px;">
@@ -78,7 +76,6 @@
       <?php }
       ?>
 
-      <!-- Form -->
       <form method="POST" action="contact.php" style="padding: 1px 25px 5px 25px; ">
         <div class="space-y-4 mb-2 mt-1">
           <div>
